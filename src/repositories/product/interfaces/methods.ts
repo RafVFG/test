@@ -1,5 +1,11 @@
-import { Product } from "../../../entities/product/interfaces/product";
+import { Product as ProductOfCreate } from "../../../use-cases/create-product/interfaces/product";
+import { Filter, Product as ProductOfRead } from "../../../use-cases/read-product/intefaces/product";
 
 export interface ProductRepositoryMethods {
-    create: (data: Product) => Promise<void>
+    create: (product: ProductOfCreate) => Promise<number>
+    read: (filter: string[]) => Promise<ProductOfRead[] | null>
+    readWithIdUserCreate: (filter: Filter) => Promise<ProductOfRead | null>
+    readWithIdCompany: (filter: Filter) => Promise<ProductOfRead | null>
+    update: (id: number, product: string[]) => Promise<void>
+    del: (id: number) => Promise<void>
 }
